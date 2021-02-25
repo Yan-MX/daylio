@@ -1,30 +1,32 @@
 import React from "react";
-import { Text, View } from "react-native";
+
 import { globalStyles } from "./styles/global";
+import EntryPage from "./screens/entryScreen/EntryPage";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import WarningPage from "./screens/Warning";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import COLORS from "./styles/colors";
+
 const Tab = createBottomTabNavigator();
+const ICONSIZE = 35;
 
 function warning() {
   return <WarningPage />;
 }
-const color = {
-  primary: "#e91e63",
-  secondary: "#ffb8bf",
-  white: "#ffffff",
-};
+function showEntryPage() {
+  return <EntryPage />;
+}
 
 function MyTabs() {
   return (
     <Tab.Navigator
       initialRouteName="Feed"
       tabBarOptions={{
-        inactiveTintColor: color.white,
-        activeTintColor: color.primary,
-        activeBackgroundColor: color.secondary,
-        inactiveBackgroundColor: color.secondary,
+        inactiveTintColor: COLORS.white,
+        activeTintColor: COLORS.primary,
+        activeBackgroundColor: COLORS.secondary,
+        inactiveBackgroundColor: COLORS.secondary,
         style: {
           height: 60,
         },
@@ -35,14 +37,14 @@ function MyTabs() {
     >
       <Tab.Screen
         name="Entries"
-        component={warning}
+        component={showEntryPage}
         options={{
           tabBarLabel: "Entries",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name="calendar-text-outline"
               color={color}
-              size={35}
+              size={ICONSIZE}
             />
           ),
         }}
@@ -53,7 +55,11 @@ function MyTabs() {
         options={{
           tabBarLabel: "Stats",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="chart-bar" color={color} size={35} />
+            <MaterialCommunityIcons
+              name="chart-bar"
+              color={color}
+              size={ICONSIZE}
+            />
           ),
         }}
       />
@@ -66,7 +72,7 @@ function MyTabs() {
             <MaterialCommunityIcons
               name="calendar-range-outline"
               color={color}
-              size={35}
+              size={ICONSIZE}
             />
           ),
         }}
@@ -80,7 +86,7 @@ function MyTabs() {
             <MaterialCommunityIcons
               name="dots-horizontal-circle"
               color={color}
-              size={35}
+              size={ICONSIZE}
             />
           ),
         }}

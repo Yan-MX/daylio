@@ -6,4 +6,9 @@ export const globalStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  card: {
+    borderRadius: 45,
+    padding: 0,
+    margin: 0,
+  },
 });
