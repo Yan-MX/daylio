@@ -7,11 +7,12 @@ import mockupData from "../MockupData";
 import COLORS from "../../styles/colors";
 const ICONSIZE = 50;
 
-function getIconColor(mood) {
+export function getIconColor(mood) {
   let color = COLORS.primary;
   if (mood.includes("angry")) color = COLORS.fourth;
   if (mood.includes("meh")) color = COLORS.third;
-  if (mood.includes("tears") && mood.includes("tongue"))
+  if (mood.includes("sad")) color = COLORS.fifth;
+  if (mood.includes("tears") || mood.includes("tongue"))
     color = COLORS.secondary;
   return color;
 }
@@ -20,7 +21,7 @@ const EntryCard = () => {
   return (
     <ScrollView style={{ marginBottom: 100 }}>
       {mockupData.map((card, index) => (
-        <Card key={index} style={globalStyles.card}>
+        <Card key={index}>
           <Card.Title>{card.date}</Card.Title>
           <Card.Divider />
           {card.moodEntries

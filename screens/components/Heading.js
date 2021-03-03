@@ -3,22 +3,6 @@ import { StyleSheet, View, Text } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import COLORS from "../../styles/colors";
 
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    marginTop: 30,
-    marginBottom: 20,
-  },
-  text: {
-    fontSize: 20,
-    marginHorizontal: 10,
-  },
-  searchIcon: {
-    marginLeft: 10,
-  },
-});
 const ICONSIZE = 30;
 
 const monthNames = [
@@ -50,4 +34,21 @@ const Heading = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 30,
+    marginBottom: 20,
+  },
+  text: {
+    fontSize: 20,
+    marginHorizontal: 10,
+  },
+  searchIcon: {
+    marginLeft: 10,
+  },
+});
 export default Heading;
