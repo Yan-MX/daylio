@@ -7,10 +7,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import WarningPage from "./screens/Warning";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import COLORS from "./styles/colors";
+import { AppRegistry } from "react-native";
+import { Provider } from "react-redux";
 
+import configureStore from "./store";
 const Tab = createBottomTabNavigator();
 const ICONSIZE = 35;
-
+const store = configureStore();
 function warning() {
   return <WarningPage />;
 }
@@ -97,8 +100,10 @@ function MyTabs() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <MyTabs />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <MyTabs />
+      </NavigationContainer>
+    </Provider>
   );
 }

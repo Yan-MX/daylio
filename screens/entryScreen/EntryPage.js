@@ -4,11 +4,12 @@ import AddEntry from "./AddEntry";
 import { StyleSheet, View, Text } from "react-native";
 import Heading from "../components/Heading";
 
-const EntryPage = () => {
+const EntryPage = ({ data, addEntry }) => {
+  console.log(data);
   return (
     <View>
       <Heading />
-      <AddEntry />
+      <AddEntry addEntry={addEntry} />
       <EntryCard />
     </View>
   );

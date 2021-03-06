@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const AddEntry = () => {
+const AddEntry = ({ addEntry }) => {
   const [visible, setVisible] = useState(false);
   const toggleOverlay = () => {
     setVisible(!visible);
@@ -35,7 +35,7 @@ const AddEntry = () => {
         />
       </View>
       <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
-        <OverlayAdd />
+        <OverlayAdd addEntry={addEntry} />
       </Overlay>
     </View>
   );

@@ -4,9 +4,13 @@ import { Dimensions } from "react-native";
 import COLORS from "../../styles/colors";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { getIconColor } from "../entryScreen/EntryCard";
+import { AntDesign } from "@expo/vector-icons";
 import { globalStyles } from "../../styles/global";
+import { Input } from "react-native-elements";
 
-const OverlayAdd = () => {
+const OverlayAdd = ({ addEntry }) => {
+  const [mood, setMood] = useState("");
+  const [entry, setEntry] = useState("");
   const d = new Date();
   const date = d.toDateString();
   const ICONSIZE = 60;
@@ -21,9 +25,27 @@ const OverlayAdd = () => {
             name={mood}
             size={ICONSIZE}
             color={getIconColor(mood)}
+            onPress={() => {
+              setMood(mood);
+            }}
           />
         ))}
       </View>
+      <Input placeholder="Label" />
+      <Input placeholder="Note" />
+      <AntDesign
+        name="checkcircle"
+        size={24}
+        color="black"
+        onPress={() =>
+          addEntry({
+            mood: mood,
+            timestamp: "00:00",
+            label: [],
+            note: "",
+          })
+        }
+      />
     </View>
   );
 };
