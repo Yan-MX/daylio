@@ -3,7 +3,6 @@ import { Text, View, SafeAreaView, ScrollView } from "react-native";
 import { globalStyles } from "../../styles/global";
 import { Card, ListItem, Button, Avatar } from "react-native-elements";
 import { FontAwesome5 } from "@expo/vector-icons";
-import mockupData from "../MockupData";
 import COLORS from "../../styles/colors";
 const ICONSIZE = 50;
 
@@ -17,10 +16,10 @@ export function getIconColor(mood) {
   return color;
 }
 
-const EntryCard = () => {
+const EntryCard = ({ entryCardData }) => {
   return (
     <ScrollView style={{ marginBottom: 100 }}>
-      {mockupData.map((card, index) => (
+      {entryCardData.map((card, index) => (
         <Card key={index}>
           <Card.Title>{card.date}</Card.Title>
           <Card.Divider />

@@ -4,7 +4,6 @@ import { globalStyles } from "../../styles/global";
 import { Ionicons } from "@expo/vector-icons";
 import { Overlay } from "react-native-elements";
 import { FontAwesome5 } from "@expo/vector-icons";
-import mockupData from "../MockupData";
 import OverlayAdd from "../reusable/OverlayAdd";
 import COLORS from "../../styles/colors";
 const ICONSIZE = 60;

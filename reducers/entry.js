@@ -32,7 +32,7 @@ const EntryReducer = handleActions(
 function handleAdd(state, action) {
   return {
     ...state,
-    data: state.entry.data.concat(action.payload),
+    data: state.data.concat(action.payload),
   };
 }
 

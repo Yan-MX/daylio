@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import EntryCard from "./EntryCard";
 import AddEntry from "./AddEntry";
 import { StyleSheet, View, Text } from "react-native";
@@ -10,7 +10,7 @@ const EntryPage = ({ data, addEntry }) => {
     <View>
       <Heading />
       <AddEntry addEntry={addEntry} />
-      <EntryCard />
+      <EntryCard entryCardData={data} />
     </View>
   );
 };

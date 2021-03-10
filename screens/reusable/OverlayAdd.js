@@ -6,7 +6,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { getIconColor } from "../entryScreen/EntryCard";
 import { AntDesign } from "@expo/vector-icons";
 import { globalStyles } from "../../styles/global";
-import { Input } from "react-native-elements";
+import { Input } from "react-native-elements"; // This will lead to this error due to React native web bug https://stackoverflow.com/questions/66424449/react-does-not-recognize-the-enterkeyhint-prop-on-a-dom-element
 
 const OverlayAdd = ({ addEntry }) => {
   const [mood, setMood] = useState("");
@@ -31,6 +31,7 @@ const OverlayAdd = ({ addEntry }) => {
           />
         ))}
       </View>
+
       <Input placeholder="Label" />
       <Input placeholder="Note" />
       <AntDesign
@@ -39,10 +40,15 @@ const OverlayAdd = ({ addEntry }) => {
         color="black"
         onPress={() =>
           addEntry({
-            mood: mood,
-            timestamp: "00:00",
-            label: [],
-            note: "",
+            date: "Sunday,7 Mar",
+            moodEntries: [
+              {
+                mood: "mode", // has mode is undefined error if using directly
+                timestamp: "00:00",
+                label: ["AAA"],
+                note: "N/A",
+              },
+            ],
           })
         }
       />
