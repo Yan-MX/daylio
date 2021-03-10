@@ -6,18 +6,25 @@ import mockupData from "../screens/MockupData";
 const initialState = {
   data: mockupData,
   error: undefined,
+  isAdding: false,
 };
 
 // Actions
 const ADD_ENTRY = "Entry/ADD";
+const OPEN_OR_CLOSE = "Entry/OPEN_OR_CLOSE_AddEntry";
 
 // Action creators
 
 export function addEntry(data) {
-  console.log("add entry called");
   return {
     type: ADD_ENTRY,
     payload: data,
+  };
+}
+
+export function ShowOrHideOverlay() {
+  return {
+    type: OPEN_OR_CLOSE,
   };
 }
 
@@ -25,6 +32,7 @@ export function addEntry(data) {
 const EntryReducer = handleActions(
   {
     [ADD_ENTRY]: handleAdd,
+    [OPEN_OR_CLOSE]: handleOpenOrClose,
   },
   initialState
 );
@@ -33,6 +41,13 @@ function handleAdd(state, action) {
   return {
     ...state,
     data: state.data.concat(action.payload),
+  };
+}
+
+function handleOpenOrClose(state, action) {
+  return {
+    ...state,
+    isAdding: !state.isAdding,
   };
 }
 

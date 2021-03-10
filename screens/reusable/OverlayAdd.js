@@ -5,53 +5,65 @@ import COLORS from "../../styles/colors";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { getIconColor } from "../entryScreen/EntryCard";
 import { AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { globalStyles } from "../../styles/global";
 import { Input } from "react-native-elements"; // This will lead to this error due to React native web bug https://stackoverflow.com/questions/66424449/react-does-not-recognize-the-enterkeyhint-prop-on-a-dom-element
 
-const OverlayAdd = ({ addEntry }) => {
+const OverlayAdd = ({ addEntry, ShowOrHideOverlay }) => {
   const [mood, setMood] = useState("");
   const [entry, setEntry] = useState("");
   const d = new Date();
   const date = d.toDateString();
   const ICONSIZE = 60;
-  return (
-    <View style={styles.containter}>
-      <Text style={styles.text}>How are you? </Text>
-      <Text style={styles.modalText}>{date}</Text>
-      <View style={globalStyles.flexrow}>
-        {moods.map((mood, i) => (
-          <FontAwesome5
-            key={i}
-            name={mood}
-            size={ICONSIZE}
-            color={getIconColor(mood)}
-            onPress={() => {
-              setMood(mood);
-            }}
-          />
-        ))}
-      </View>
 
-      <Input placeholder="Label" />
-      <Input placeholder="Note" />
-      <AntDesign
-        name="checkcircle"
-        size={24}
-        color="black"
-        onPress={() =>
-          addEntry({
-            date: "Sunday,7 Mar",
-            moodEntries: [
-              {
-                mood: "mode", // has mode is undefined error if using directly
-                timestamp: "00:00",
-                label: ["AAA"],
-                note: "N/A",
-              },
-            ],
-          })
-        }
+  const handleSubmitNewEntry = () => {
+    //need check if mood is added ....
+    addEntry({
+      date: "Sunday,7 Mar",
+      moodEntries: [
+        {
+          mood: mood,
+          timestamp: "00:00",
+          label: [],
+          note: "",
+        },
+      ],
+    });
+    ShowOrHideOverlay();
+  };
+  return (
+    <View>
+      <Ionicons
+        name="arrow-back-circle"
+        size={ICONSIZE}
+        color={COLORS.primary}
       />
+      <View style={styles.containter}>
+        <Text style={styles.text}>How are you? </Text>
+        <Text style={styles.modalText}>{date}</Text>
+        <View style={globalStyles.flexrow}>
+          {moods.map((moodOption, i) => (
+            <FontAwesome5
+              key={i}
+              name={moodOption}
+              size={ICONSIZE}
+              color={getIconColor(moodOption)}
+              onPress={() => {
+                setMood(moodOption);
+              }}
+            />
+          ))}
+        </View>
+
+        <Input placeholder="Label" />
+        <Input placeholder="Note" />
+        <AntDesign
+          name="checkcircle"
+          size={ICONSIZE}
+          color={COLORS.primary}
+          onPress={handleSubmitNewEntry}
+        />
+      </View>
     </View>
   );
 };

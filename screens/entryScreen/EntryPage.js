@@ -4,12 +4,15 @@ import AddEntry from "./AddEntry";
 import { StyleSheet, View, Text } from "react-native";
 import Heading from "../components/Heading";
 
-const EntryPage = ({ data, addEntry }) => {
-  console.log(data);
+const EntryPage = ({ data, addEntry, isAdding, ShowOrHideOverlay }) => {
   return (
     <View>
       <Heading />
-      <AddEntry addEntry={addEntry} />
+      <AddEntry
+        addEntry={addEntry}
+        isAdding={isAdding}
+        ShowOrHideOverlay={ShowOrHideOverlay}
+      />
       <EntryCard entryCardData={data} />
     </View>
   );

@@ -1,8 +1,10 @@
 import React from "react";
 import { Text, View, SafeAreaView, ScrollView } from "react-native";
 import { globalStyles } from "../../styles/global";
+import { nanoid } from "nanoid/non-secure";
 import { Card, ListItem, Button, Avatar } from "react-native-elements";
 import { FontAwesome5 } from "@expo/vector-icons";
+
 import COLORS from "../../styles/colors";
 const ICONSIZE = 50;
 
@@ -19,13 +21,13 @@ export function getIconColor(mood) {
 const EntryCard = ({ entryCardData }) => {
   return (
     <ScrollView style={{ marginBottom: 100 }}>
-      {entryCardData.map((card, index) => (
-        <Card key={index}>
+      {entryCardData.map((card) => (
+        <Card key={nanoid()}>
           <Card.Title>{card.date}</Card.Title>
           <Card.Divider />
           {card.moodEntries
             .map((entry, i) => (
-              <ListItem key={i} bottomDivider>
+              <ListItem key={i + entry.mood} bottomDivider>
                 <FontAwesome5
                   name={entry.mood}
                   size={ICONSIZE}

@@ -1,11 +1,11 @@
 import React from "react";
-
+import { Text, View, SafeAreaView, StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import COLORS from "./styles/colors";
 import EntryContainer from "./containers/entryContainer";
 import WarningPage from "./screens/Warning";
-
+import { Ionicons } from "@expo/vector-icons";
 const Tab = createBottomTabNavigator();
 const ICONSIZE = 35;
 
@@ -58,6 +58,33 @@ function MyTabs() {
               color={color}
               size={ICONSIZE}
             />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Add"
+        component={warning}
+        options={{
+          tabBarLabel: "",
+          tabBarIcon: ({ color, size }) => (
+            <View
+              style={{
+                position: "absolute",
+                //bottom: 0, // space from bottombar
+                height: 68,
+                width: 68,
+                borderRadius: 68,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Ionicons
+                name="ios-add-circle"
+                size={68}
+                color={COLORS.primary}
+                onPress={() => {}}
+              />
+            </View>
           ),
         }}
       />

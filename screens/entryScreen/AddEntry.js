@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const AddEntry = ({ addEntry }) => {
+const AddEntry = ({ addEntry, isAdding, ShowOrHideOverlay }) => {
   const [visible, setVisible] = useState(false);
   const toggleOverlay = () => {
-    setVisible(!visible);
+    ShowOrHideOverlay();
   };
 
   return (
@@ -30,11 +30,11 @@ const AddEntry = ({ addEntry }) => {
           name="ios-add-circle"
           size={ICONSIZE}
           color={COLORS.white}
-          onPress={() => setVisible(true)}
+          onPress={() => ShowOrHideOverlay()}
         />
       </View>
-      <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
-        <OverlayAdd addEntry={addEntry} />
+      <Overlay isVisible={isAdding} onBackdropPress={toggleOverlay}>
+        <OverlayAdd addEntry={addEntry} ShowOrHideOverlay={ShowOrHideOverlay} />
       </Overlay>
     </View>
   );
