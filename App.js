@@ -1,7 +1,7 @@
 import React from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
-import MyTabs from "./index";
+import BottomtabContainer from "./containers/tabContainer";
 import { Provider } from "react-redux";
 
 import configureStore from "./store";
@@ -12,7 +12,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <MyTabs />
+        <BottomtabContainer />
       </NavigationContainer>
     </Provider>
   );

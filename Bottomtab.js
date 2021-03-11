@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, SafeAreaView, StyleSheet } from "react-native";
+import { View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import COLORS from "./styles/colors";
@@ -9,14 +9,14 @@ import { Ionicons } from "@expo/vector-icons";
 const Tab = createBottomTabNavigator();
 const ICONSIZE = 35;
 
-function warning() {
-  return <WarningPage />;
-}
-function showEntryPage() {
-  return <EntryContainer />;
-}
+function MyTabs({ addEntry, ShowOrHideOverlay, isAdding }) {
+  function warning() {
+    return <WarningPage />;
+  }
+  function showEntryPage() {
+    return <EntryContainer />;
+  }
 
-function MyTabs() {
   return (
     <Tab.Navigator
       initialRouteName="Feed"
@@ -63,30 +63,35 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Add"
-        component={warning}
+        component={showEntryPage}
         options={{
           tabBarLabel: "",
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: () => (
             <View
               style={{
                 position: "absolute",
-                //bottom: 0, // space from bottombar
-                height: 68,
-                width: 68,
-                borderRadius: 68,
+                bottom: -10, // space from bottombar
+                height: 76,
+                width: 76,
+                borderRadius: 76,
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
               <Ionicons
                 name="ios-add-circle"
-                size={68}
+                size={76}
                 color={COLORS.primary}
-                onPress={() => {}}
               />
             </View>
           ),
         }}
+        listeners={() => ({
+          tabPress: (e) => {
+            e.preventDefault();
+            ShowOrHideOverlay();
+          },
+        })}
       />
       <Tab.Screen
         name="Calender"

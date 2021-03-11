@@ -9,7 +9,7 @@ export const globalStyles = StyleSheet.create({
     justifyContent: "center",
   },
   addEntry: {
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.secondary,
     color: COLORS.primary,
     display: "flex",
     flexDirection: "row",

@@ -29,7 +29,7 @@ const AddEntry = ({ addEntry, isAdding, ShowOrHideOverlay }) => {
         <Ionicons
           name="ios-add-circle"
           size={ICONSIZE}
-          color={COLORS.white}
+          color={COLORS.primary}
           onPress={() => ShowOrHideOverlay()}
         />
       </View>

@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    marginTop: 30,
-    marginBottom: 20,
+    paddingTop: 30,
+    paddingBottom: 20,
   },
   text: {
     fontSize: 20,

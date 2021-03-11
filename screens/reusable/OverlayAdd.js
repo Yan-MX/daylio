@@ -37,6 +37,7 @@ const OverlayAdd = ({ addEntry, ShowOrHideOverlay }) => {
         name="arrow-back-circle"
         size={ICONSIZE}
         color={COLORS.primary}
+        onPress={() => ShowOrHideOverlay()}
       />
       <View style={styles.containter}>
         <Text style={styles.text}>How are you? </Text>
