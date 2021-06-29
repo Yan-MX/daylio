@@ -2,23 +2,8 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import COLORS from "../../styles/colors";
-
+import { monthNames } from "./Constant";
 const ICONSIZE = 30;
-
-const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
 
 const d = new Date();
 //get current month

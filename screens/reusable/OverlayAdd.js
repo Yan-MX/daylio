@@ -8,24 +8,31 @@ import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { globalStyles } from "../../styles/global";
 import { Input } from "react-native-elements"; // This will lead to this error due to React native web bug https://stackoverflow.com/questions/66424449/react-does-not-recognize-the-enterkeyhint-prop-on-a-dom-element
+import { monthNames, weekday } from "../components/Constant";
 
 const OverlayAdd = ({ addEntry, ShowOrHideOverlay }) => {
   const [mood, setMood] = useState("");
-  const [entry, setEntry] = useState("");
+  const [note, setNote] = useState("");
+  const [label, setLabel] = useState("");
   const d = new Date();
   const date = d.toDateString();
   const ICONSIZE = 60;
 
   const handleSubmitNewEntry = () => {
     //need check if mood is added ....
+
+    //get current date
+    const d = new Date();
+    const getCurrentdate =
+      weekday[d.getDay()] + " " + d.getDate() + " " + monthNames[d.getMonth()];
     addEntry({
-      date: "Sunday,7 Mar",
+      date: getCurrentdate,
       moodEntries: [
         {
           mood: mood,
           timestamp: "00:00",
-          label: [],
-          note: "",
+          label: label,
+          note: note,
         },
       ],
     });
@@ -56,8 +63,8 @@ const OverlayAdd = ({ addEntry, ShowOrHideOverlay }) => {
           ))}
         </View>
 
-        <Input placeholder="Label" />
-        <Input placeholder="Note" />
+        <Input placeholder="Label" onChangeText={(value) => setLabel(value)} />
+        <Input placeholder="Note" onChangeText={(value) => setNote(value)} />
         <AntDesign
           name="checkcircle"
           size={ICONSIZE}

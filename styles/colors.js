@@ -1,10 +1,10 @@
 //color theme for entire app
 const COLORS = {
-  primary: "#CC54D0",
+  primary: "lightgreen",
   secondary: "#6AAFF2",
-  third: "#B74E6A",
-  fourth: "#4A42AE",
-  fifth: "#21174B",
+  third: "lightblue",
+  fourth: "lavender",
+  fifth: "olive",
   white: "#ffffff",
 };
 export default COLORS;

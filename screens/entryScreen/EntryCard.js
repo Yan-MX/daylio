@@ -19,9 +19,32 @@ export function getIconColor(mood) {
 }
 
 const EntryCard = ({ entryCardData }) => {
+  //clean and reorg data
+  let newEntrydata = [];
+  for (let entry of entryCardData) {
+    let check = false;
+    if (entryCardData.length > 0) {
+      for (let item of newEntrydata) {
+        if (entry.date == item.date) {
+          for (let mood of entry.moodEntries) {
+            item.moodEntries.push(mood);
+          }
+          const index = entryCardData.indexOf(entry);
+          if (index > -1) {
+            entryCardData.splice(index, 1);
+          }
+          check = true;
+          console.log(newEntrydata);
+        }
+      }
+    }
+
+    check ? "" : newEntrydata.push(entry);
+  }
+
   return (
     <ScrollView style={{ marginBottom: 100 }}>
-      {entryCardData.map((card) => (
+      {newEntrydata.map((card) => (
         <Card key={nanoid()}>
           <Card.Title>{card.date}</Card.Title>
           <Card.Divider />

@@ -38,6 +38,17 @@ const EntryReducer = handleActions(
 );
 
 function handleAdd(state, action) {
+  // if ((action.payload.date = state.data.get(-1).date)) {
+  //   console.log(action.payload.date);
+  // }
+  //   return {
+  //     ...state,
+  //     data: [
+  //       ...state.data,
+  //       state.data[-1].moodentries.concat(action.payload.moodentries[0]),
+  //     ],
+  //   };
+  // } else {
   return {
     ...state,
     data: state.data.concat(action.payload),

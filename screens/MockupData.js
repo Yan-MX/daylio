@@ -17,7 +17,6 @@ const mockupData = [
         label: ["sport"],
         note: "developing app daylio",
       },
-      { mood: "meh-blank", timestamp: "19:44", label: [], note: "" },
     ],
   },
   {
