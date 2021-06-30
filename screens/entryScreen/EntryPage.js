@@ -4,10 +4,22 @@ import AddEntry from "./AddEntry";
 import { StyleSheet, View, Text } from "react-native";
 import Heading from "../components/Heading";
 
-const EntryPage = ({ data, addEntry, isAdding, ShowOrHideOverlay }) => {
+const EntryPage = ({
+  data,
+  addEntry,
+  month,
+  isAdding,
+  ShowOrHideOverlay,
+  ShowNextMonth,
+  ShowLastMonth,
+}) => {
   return (
     <View>
-      <Heading />
+      <Heading
+        month={month}
+        ShowLastMonth={ShowLastMonth}
+        ShowNextMonth={ShowNextMonth}
+      />
       <AddEntry
         addEntry={addEntry}
         isAdding={isAdding}

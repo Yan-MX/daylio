@@ -16,3 +16,6 @@ export function getIconColor(mood) {
 const d = new Date();
 export const getCurrentdate =
   weekday[d.getDay()] + " " + d.getDate() + " " + monthNames[d.getMonth()];
+
+//get current month
+export const getCurrentMonth = monthNames[d.getMonth()];

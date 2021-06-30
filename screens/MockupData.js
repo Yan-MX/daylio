@@ -2,14 +2,14 @@ import React from "react";
 //a data mockup
 const mockupData = [
   {
-    date: "Monday,21 Feb",
+    date: "Monday,21 February",
     moodEntries: [
       { mood: "grin", timestamp: "02:23", label: ["rest"], note: "" },
       { mood: "grin-beam", timestamp: "09:06", label: [], note: "" },
     ],
   },
   {
-    date: "Tuesday,22 Feb",
+    date: "Tuesday,22 March",
     moodEntries: [
       {
         mood: "grin-hearts",
@@ -20,7 +20,7 @@ const mockupData = [
     ],
   },
   {
-    date: "Wednesday,23 Feb",
+    date: "Wednesday,23 April",
     moodEntries: [
       {
         mood: "grin-tongue-squint",
@@ -32,7 +32,7 @@ const mockupData = [
     ],
   },
   {
-    date: "Thursday,24 Feb",
+    date: "Thursday,24 May",
     moodEntries: [
       {
         mood: "grin-stars",

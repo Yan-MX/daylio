@@ -2,19 +2,26 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import COLORS from "../../styles/colors";
-import { monthNames } from "./Constant";
+
 const ICONSIZE = 30;
 
-const d = new Date();
-//get current month
-const getCurrentMonth = monthNames[d.getMonth()] + "  " + d.getFullYear();
-
-const Heading = () => {
+const Heading = ({ month, ShowNextMonth, ShowLastMonth }) => {
+  console.log(month);
   return (
     <View style={styles.container}>
-      <AntDesign name="leftcircleo" size={ICONSIZE} color={COLORS.primary} />
-      <Text style={styles.text}>{getCurrentMonth}</Text>
-      <AntDesign name="rightcircleo" size={ICONSIZE} color={COLORS.primary} />
+      <AntDesign
+        name="leftcircleo"
+        size={ICONSIZE}
+        color={COLORS.primary}
+        onPress={() => ShowLastMonth()}
+      />
+      <Text style={styles.text}>{month}</Text>
+      <AntDesign
+        name="rightcircleo"
+        size={ICONSIZE}
+        color={COLORS.primary}
+        onPress={() => ShowNextMonth()}
+      />
       {/* <AntDesign name="search1" size={ICONSIZE} color={COLORS.primary} /> */}
     </View>
   );
