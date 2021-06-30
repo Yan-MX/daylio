@@ -25,7 +25,7 @@ const EntryPage = ({
         isAdding={isAdding}
         ShowOrHideOverlay={ShowOrHideOverlay}
       />
-      <EntryCard entryCardData={data} />
+      <EntryCard entryCardData={data} month={month} />
     </View>
   );
 };

@@ -4,7 +4,6 @@ import mockupData from "../screens/MockupData";
 import { getCurrentMonth } from "../screens/reusable/reuseFunction";
 import { monthNames, weekday } from "../screens/components/Constant";
 // Initial state
-console.log(getCurrentMonth);
 const initialState = {
   data: mockupData,
   error: undefined,

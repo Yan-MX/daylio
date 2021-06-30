@@ -7,11 +7,12 @@ import { getIconColor } from "../reusable/reuseFunction";
 import Bottomsheet from "../reusable/BottomSheet";
 const ICONSIZE = 50;
 
-const EntryCard = ({ entryCardData }) => {
+const EntryCard = ({ entryCardData, month }) => {
   const [visible, setVisible] = useState(false);
   const [date, setDate] = useState("");
   const [mood, setMood] = useState("");
   let newEntrydata = [];
+  let filteredMonthdate = [];
   const openButtomSheet = (thedate, i) => {
     setVisible(true);
     setDate(thedate);
@@ -37,7 +38,6 @@ const EntryCard = ({ entryCardData }) => {
               entryCardData.splice(index, 1);
             }
             check = true;
-            console.log(newEntrydata);
           }
         }
       }
@@ -45,12 +45,17 @@ const EntryCard = ({ entryCardData }) => {
       check ? "" : newEntrydata.push(entry);
     }
   };
+  const filterMonth = () => {
+    filteredMonthdate = newEntrydata.filter(
+      (el) => el.date.split(" ")[2] == month
+    );
+  };
 
   dataReorg();
-
+  filterMonth();
   return (
     <ScrollView style={{ marginBottom: 100 }}>
-      {newEntrydata
+      {filteredMonthdate
         .filter((el) => el.moodEntries.length > 0)
         .map((card) => (
           <Card key={nanoid()}>

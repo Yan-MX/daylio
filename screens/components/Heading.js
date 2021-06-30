@@ -6,7 +6,6 @@ import COLORS from "../../styles/colors";
 const ICONSIZE = 30;
 
 const Heading = ({ month, ShowNextMonth, ShowLastMonth }) => {
-  console.log(month);
   return (
     <View style={styles.container}>
       <AntDesign
