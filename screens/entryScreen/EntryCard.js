@@ -1,27 +1,17 @@
 import React, { useState } from "react";
-import { StyleSheet, ScrollView } from "react-native";
-import { globalStyles } from "../../styles/global";
+import { ScrollView } from "react-native";
 import { nanoid } from "nanoid/non-secure";
-import { Card, ListItem, BottomSheet } from "react-native-elements";
+import { Card, ListItem } from "react-native-elements";
 import { FontAwesome5 } from "@expo/vector-icons";
-
-import COLORS from "../../styles/colors";
+import { getIconColor } from "../reusable/reuseFunction";
+import Bottomsheet from "../reusable/BottomSheet";
 const ICONSIZE = 50;
-
-export function getIconColor(mood) {
-  let color = COLORS.primary;
-  if (mood.includes("angry")) color = COLORS.fourth;
-  if (mood.includes("meh")) color = COLORS.third;
-  if (mood.includes("sad")) color = COLORS.fifth;
-  if (mood.includes("tears") || mood.includes("tongue"))
-    color = COLORS.secondary;
-  return color;
-}
 
 const EntryCard = ({ entryCardData }) => {
   const [visible, setVisible] = useState(false);
   const [date, setDate] = useState("");
   const [mood, setMood] = useState("");
+  let newEntrydata = [];
   const openButtomSheet = (thedate, i) => {
     setVisible(true);
     setDate(thedate);
@@ -33,27 +23,30 @@ const EntryCard = ({ entryCardData }) => {
     setVisible(false);
   };
   //clean and reorg data
-  let newEntrydata = [];
-  for (let entry of entryCardData) {
-    let check = false;
-    if (entryCardData.length > 0) {
-      for (let item of newEntrydata) {
-        if (entry.date == item.date) {
-          for (let mood of entry.moodEntries) {
-            item.moodEntries.push(mood);
+  const dataReorg = () => {
+    for (let entry of entryCardData) {
+      let check = false;
+      if (entryCardData.length > 0) {
+        for (let item of newEntrydata) {
+          if (entry.date == item.date) {
+            for (let mood of entry.moodEntries) {
+              item.moodEntries.push(mood);
+            }
+            const index = entryCardData.indexOf(entry);
+            if (index > -1) {
+              entryCardData.splice(index, 1);
+            }
+            check = true;
+            console.log(newEntrydata);
           }
-          const index = entryCardData.indexOf(entry);
-          if (index > -1) {
-            entryCardData.splice(index, 1);
-          }
-          check = true;
-          console.log(newEntrydata);
         }
       }
-    }
 
-    check ? "" : newEntrydata.push(entry);
-  }
+      check ? "" : newEntrydata.push(entry);
+    }
+  };
+
+  dataReorg();
 
   return (
     <ScrollView style={{ marginBottom: 100 }}>
@@ -85,35 +78,13 @@ const EntryCard = ({ entryCardData }) => {
           </Card>
         ))
         .reverse()}
-      <BottomSheet
-        isVisible={visible}
-        onBackdropPress={() => setVisible(false)}
-        containerStyle={{ backgroundColor: "rgba(0.5, 0.25, 0, 0.2)" }}
-      >
-        <ListItem bottomDivider>
-          <ListItem.Content>
-            <ListItem.Title style={styles.text}>Edit</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
-        <ListItem bottomDivider onPress={() => deleteMood()}>
-          <ListItem.Content>
-            <ListItem.Title style={styles.text}>Delete</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
-        <ListItem bottomDivider onPress={() => setVisible(false)}>
-          <ListItem.Content>
-            <ListItem.Title style={styles.text}>Cancel</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
-      </BottomSheet>
+      <Bottomsheet
+        visible={visible}
+        setVisible={setVisible}
+        deleteMood={deleteMood}
+      />
     </ScrollView>
   );
 };
 
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 20,
-    alignSelf: "center",
-  },
-});
 export default EntryCard;

@@ -3,12 +3,11 @@ import { StyleSheet, Text, View } from "react-native";
 import { Dimensions } from "react-native";
 import COLORS from "../../styles/colors";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { getIconColor } from "../entryScreen/EntryCard";
+import { getIconColor, getCurrentdate } from "./reuseFunction";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { globalStyles } from "../../styles/global";
 import { Input } from "react-native-elements"; // This will lead to this error due to React native web bug https://stackoverflow.com/questions/66424449/react-does-not-recognize-the-enterkeyhint-prop-on-a-dom-element
-import { monthNames, weekday } from "../components/Constant";
 
 const OverlayAdd = ({ addEntry, ShowOrHideOverlay }) => {
   const [mood, setMood] = useState("");
@@ -21,10 +20,6 @@ const OverlayAdd = ({ addEntry, ShowOrHideOverlay }) => {
   const handleSubmitNewEntry = () => {
     //need check if mood is added ....
 
-    //get current date
-    const d = new Date();
-    const getCurrentdate =
-      weekday[d.getDay()] + " " + d.getDate() + " " + monthNames[d.getMonth()];
     addEntry({
       date: getCurrentdate,
       moodEntries: [
