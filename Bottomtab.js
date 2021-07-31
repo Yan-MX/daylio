@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import COLORS from "./styles/colors";
 import EntryContainer from "./containers/entryContainer";
+import StatisticsContainer from "./containers/statisticsContainer";
 import WarningPage from "./screens/Warning";
 import { Ionicons } from "@expo/vector-icons";
 const Tab = createBottomTabNavigator();
@@ -16,6 +17,9 @@ function MyTabs({ addEntry, ShowOrHideOverlay, isAdding }) {
   function showEntryPage() {
     return <EntryContainer />;
   }
+  function showStatisticsPage() {
+    return <StatisticsContainer />;
+  }
 
   return (
     <Tab.Navigator
@@ -26,10 +30,10 @@ function MyTabs({ addEntry, ShowOrHideOverlay, isAdding }) {
         activeBackgroundColor: COLORS.secondary,
         inactiveBackgroundColor: COLORS.secondary,
         style: {
-          height: 60,
+          height: "11%",
         },
         labelStyle: {
-          marginBottom: 5,
+          //marginBottom: "1%",
         },
       }}
     >
@@ -49,7 +53,7 @@ function MyTabs({ addEntry, ShowOrHideOverlay, isAdding }) {
       />
       <Tab.Screen
         name="Statistics"
-        component={warning}
+        component={showStatisticsPage}
         options={{
           tabBarLabel: "Stats",
           tabBarIcon: ({ color, size }) => (
