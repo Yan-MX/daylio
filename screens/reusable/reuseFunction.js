@@ -1,5 +1,5 @@
 import COLORS from "../../styles/colors";
-import { monthNames, weekday } from "../components/Constant";
+import { monthNames, weekday } from "../reusable/Constant";
 
 // get icon color, return a color
 export function getIconColor(mood) {

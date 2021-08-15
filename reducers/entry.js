@@ -2,7 +2,7 @@
 import { Action, handleActions } from "redux-actions";
 import mockupData from "../screens/MockupData";
 import { getCurrentMonth } from "../screens/reusable/reuseFunction";
-import { monthNames, weekday } from "../screens/components/Constant";
+import { monthNames, weekday } from "../screens/reusable/Constant";
 // Initial state
 const initialState = {
   data: mockupData,

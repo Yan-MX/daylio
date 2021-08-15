@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import EntryCard from "./EntryCard";
+import EntryCardUI from "./EntryCardUI";
+import EntryCardLogic from "./EntryCardLogic";
 import AddEntry from "./AddEntry";
 import { StyleSheet, View, Text } from "react-native";
-import Heading from "../components/Heading";
+import Heading from "../reusable/Heading";
 
 const EntryPage = ({
   data,
@@ -25,7 +26,8 @@ const EntryPage = ({
         isAdding={isAdding}
         ShowOrHideOverlay={ShowOrHideOverlay}
       />
-      <EntryCard entryCardData={data} month={month} />
+
+      <EntryCardUI entryCardData={data} month={month} />
     </View>
   );
 };

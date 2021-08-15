@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
 });
 
 const AddEntry = ({ addEntry, isAdding, ShowOrHideOverlay }) => {
-  const [visible, setVisible] = useState(false);
   const toggleOverlay = () => {
     ShowOrHideOverlay();
   };

@@ -2,7 +2,7 @@ import { nanoid } from "nanoid/non-secure";
 import { Card, ListItem } from "react-native-elements";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
-import Heading from "../components/Heading";
+import Heading from "../reusable/Heading";
 import YearinPixel from "./YearinPixel";
 const StatsCards = ({ data, month, ShowNextMonth, ShowLastMonth }) => {
   let randoms = Array.from({ length: 365 }, () =>
